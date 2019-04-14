@@ -66,6 +66,11 @@ export default {
     height: {
       type: Number,
       required: true
+    },
+
+    trim: {
+      type: Boolean,
+      default: false
     }
   },
 
@@ -109,20 +114,26 @@ export default {
     slideLeft() {
       if (this.isFirstSlide) return;
       this.currIndex--;
-      this.adjustPaddings();
+      if (this.trim) {
+        this.adjustPaddings();
+      }
     },
 
     slideRight() {
       if (this.isLastSlide) return;
       this.currIndex++;
-      this.adjustPaddings();
+      if (this.trim) {
+        this.adjustPaddings();
+      }
     },
 
     handleWindowResize() {
       this.restoreStyling();
       this.carouselWidth = this.$refs.carouselItems.clientWidth;
       this.itemWidth = this.$slots.default[0].elm.clientWidth;
-      this.adjustPaddings();
+      if (this.trim) {
+        this.adjustPaddings();
+      }
       this.adjustVisibility();
     },
 
