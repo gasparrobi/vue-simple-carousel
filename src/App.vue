@@ -61,7 +61,8 @@ button {
     min-width: 100%;
     height: 100%;
     border-radius: 3px;
-    background: url("https://cdn.fstoppers.com/styles/large-16-9/s3/lead/2018/12/cat-parody-instagram-removal.jpg");
+    /* background: url("https://cdn.fstoppers.com/styles/large-16-9/s3/lead/2018/12/cat-parody-instagram-removal.jpg"); */
+    background: url("https://placekitten.com/200/250");
     background-size: cover;
     background-position: center center;
   }
