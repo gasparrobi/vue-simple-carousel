@@ -64,7 +64,7 @@ import ResizeObserver from "resize-observer-polyfill";
 export default {
   props: {
     height: {
-      type: String,
+      type: Number,
       required: true
     }
   },
@@ -100,7 +100,7 @@ export default {
       return Math.round(this.carouselWidth / this.itemWidth);
     },
 
-    isNavigationVisible () {
+    isNavigationVisible() {
       return !this.isFirstSlide || !this.isLastSlide;
     }
   },
@@ -137,25 +137,25 @@ export default {
       }
     },
 
-    adjustPaddings () {
+    adjustPaddings() {
       this.$slots.default.forEach((el, index) => {
         if (this.currIndex === index) {
-          el.elm.style.paddingLeft = '0';
+          el.elm.style.paddingLeft = "0";
         } else if (this.visibleItemsCount - 1 + this.currIndex === index) {
-          el.elm.style.paddingRight = '0';
+          el.elm.style.paddingRight = "0";
         } else {
-          el.elm.removeAttribute('style');
+          el.elm.removeAttribute("style");
         }
       });
     },
 
-    restoreStyling () {
-      this.$slots.default.forEach(el => el.elm.removeAttribute('style'));
+    restoreStyling() {
+      this.$slots.default.forEach(el => el.elm.removeAttribute("style"));
     }
   },
 
   mounted() {
-    this.$el.style.height = this.height;
+    this.$el.style.height = `${this.height}px`;
     this.carouselElement = this.$refs.carouselItems;
     this.observer = new ResizeObserver(this.handleWindowResize);
     this.observer.observe(this.carouselElement);

@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <img width="100" src="./assets/logo.png">
-    <SimpleCarousel height="200px">
+    <SimpleCarousel :height="200">
       <div class="banner" v-for="(item, index) in items" :key="index">
         <div class="banner-item"></div>
       </div>
