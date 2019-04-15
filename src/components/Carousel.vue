@@ -66,11 +66,6 @@ export default {
     height: {
       type: Number,
       required: true
-    },
-
-    trim: {
-      type: Boolean,
-      default: false
     }
   },
 
@@ -114,9 +109,6 @@ export default {
     slideLeft() {
       if (this.isFirstSlide) return;
       this.currIndex--;
-      if (this.trim) {
-        this.adjustPaddings();
-      }
     },
 
     slideRight() {
@@ -131,9 +123,6 @@ export default {
       this.restoreStyling();
       this.carouselWidth = this.$refs.carouselItems.clientWidth;
       this.itemWidth = this.$slots.default[0].elm.clientWidth;
-      if (this.trim) {
-        this.adjustPaddings();
-      }
       this.adjustVisibility();
     },
 
@@ -146,18 +135,6 @@ export default {
         this.currIndex--;
         this.adjustVisibility();
       }
-    },
-
-    adjustPaddings() {
-      this.$slots.default.forEach((el, index) => {
-        if (this.currIndex === index) {
-          el.elm.style.paddingLeft = "0";
-        } else if (this.visibleItemsCount - 1 + this.currIndex === index) {
-          el.elm.style.paddingRight = "0";
-        } else {
-          el.elm.removeAttribute("style");
-        }
-      });
     },
 
     restoreStyling() {
@@ -219,7 +196,7 @@ export default {
 
     &-left {
       left: 0;
-      transform: translateX(-50%) translateY(-50%);
+      transform: translateX(-40%) translateY(-50%);
 
       svg {
         margin-left: -10%;
@@ -228,7 +205,7 @@ export default {
 
     &-right {
       right: 0;
-      transform: translateX(50%) translateY(-50%);
+      transform: translateX(40%) translateY(-50%);
     }
 
     &-disabled {
