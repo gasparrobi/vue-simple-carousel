@@ -114,9 +114,6 @@ export default {
     slideRight() {
       if (this.isLastSlide) return;
       this.currIndex++;
-      if (this.trim) {
-        this.adjustPaddings();
-      }
     },
 
     handleWindowResize() {
